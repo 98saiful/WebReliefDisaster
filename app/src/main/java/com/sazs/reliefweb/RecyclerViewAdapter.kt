@@ -1,5 +1,6 @@
 package com.sazs.reliefweb
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +33,11 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder
         val tvDesc = view.tvDesc
 
         fun bind(data: RecyclerData){
-            tvTitle.text = data.title
-            tvDesc.text = data.description
+            tvTitle.text = data.name
+            if(!TextUtils.isEmpty(data.description)){
+                tvDesc.text = data.description
+            }
+            else tvDesc.text = "No Desc Available"
 
         }
     }
