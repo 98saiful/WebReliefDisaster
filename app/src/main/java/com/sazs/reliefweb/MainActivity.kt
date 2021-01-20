@@ -39,13 +39,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createData(){
-//        val item = ArrayList<RecyclerData>()
-//        item.add(RecyclerData("Java","JavaDescription"))
-//        item.add(RecyclerData("Kotlin","KotlinDescription"))
-//        item.add(RecyclerData("Android","AndroidDescription"))
-//
-//        recyclerViewAdapter.setListData(item)
-//        recyclerViewAdapter.notifyDataSetChanged()
 
         val viewModel = ViewModelProvider(this).get(RecyclerActivityViewModel::class.java)
         viewModel.getRecyclerListDataObserver().observe(this, Observer<RecyclerList>{
@@ -56,6 +49,9 @@ class MainActivity : AppCompatActivity() {
             }
             else Toast.makeText(this@MainActivity, "Error in getting data from API", Toast.LENGTH_SHORT).show()
         })
-        viewModel.makeApiCall()
+
+        searchButton.setOnClickListener {
+            viewModel.makeApiCall(searchBox.text.toString())
+        }
     }
 }

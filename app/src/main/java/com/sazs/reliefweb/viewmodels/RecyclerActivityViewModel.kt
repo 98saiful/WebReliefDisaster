@@ -22,21 +22,18 @@ class RecyclerActivityViewModel: ViewModel() {
         return recyclerListData
     }
 
-    fun makeApiCall(){
+    fun makeApiCall(input: String){
         val retroInstance = RetroInstance.getRetroInstance().create(RetroService::class.java)
-        val call = retroInstance.getDataFromAPI("network")
+        val call = retroInstance.getDataFromAPI(input)
         call.enqueue(object: Callback<RecyclerList> {
             override fun onResponse(call: Call<RecyclerList>, response: Response<RecyclerList>) {
                 if(response.isSuccessful){
-//                    recyclerViewAdapter.setListData(response.body()?.items!!)
-//                    recyclerViewAdapter.notifyDataSetChanged()
                     recyclerListData.postValue(response.body())
                 }
                 else recyclerListData.postValue(null)
             }
 
             override fun onFailure(call: Call<RecyclerList>, t: Throwable) {
-//                Toast.makeText(this@MainActivity, "Error in getting data from API", Toast.LENGTH_SHORT).show()
                 recyclerListData.postValue(null)
             }
         })
