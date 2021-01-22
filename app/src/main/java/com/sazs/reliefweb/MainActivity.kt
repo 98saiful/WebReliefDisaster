@@ -7,15 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
-import com.sazs.reliefweb.network.RetroInstance
-import com.sazs.reliefweb.network.RetroService
 import com.sazs.reliefweb.viewmodels.RecyclerActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
@@ -43,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this).get(RecyclerActivityViewModel::class.java)
         viewModel.getRecyclerListDataObserver().observe(this, Observer<RecyclerList>{
             if(it != null){
-                recyclerViewAdapter.setListData(it.items)
+                recyclerViewAdapter.setListData(it.data)
                 recyclerViewAdapter.notifyDataSetChanged()
 
             }

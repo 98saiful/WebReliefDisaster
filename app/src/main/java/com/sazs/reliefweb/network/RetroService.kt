@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface RetroService {
 
-    @GET("repositories")
-    fun getDataFromAPI(@Query("q")query: String): Call<RecyclerList>
+    @GET("disasters?appname=sazs")
+    fun getDataFromAPI(@Query("query[value]&fields[include][]=date")query: String): Call<RecyclerList>
 
 }

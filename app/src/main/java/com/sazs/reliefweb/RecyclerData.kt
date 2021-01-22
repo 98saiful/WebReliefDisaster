@@ -1,5 +1,6 @@
 package com.sazs.reliefweb
 
-data class RecyclerList(val items: ArrayList<RecyclerData>)
-data class RecyclerData(val name: String, val description: String, val owner: Owner)
-data class Owner(val avatar_url: String)
+data class RecyclerList(val data: ArrayList<RecyclerData>)
+data class RecyclerData(val href: String, val fields: Fields)
+data class Fields(val name: String, val date: List<Date>)
+data class Date(val created: String)

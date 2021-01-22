@@ -33,11 +33,11 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder
         val tvDesc = view.tvDesc
 
         fun bind(data: RecyclerData){
-            tvTitle.text = data.name
-            if(!TextUtils.isEmpty(data.description)){
-                tvDesc.text = data.description
+            tvTitle.text = data.fields.name
+            if(!TextUtils.isEmpty(data.href)){
+                tvDesc.text = data.href
             }
-            else tvDesc.text = "No Desc Available"
+            else tvDesc.text = "No Date Available"
 
         }
     }
