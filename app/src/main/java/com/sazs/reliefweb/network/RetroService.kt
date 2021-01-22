@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface RetroService {
 
     @GET("disasters?appname=sazs")
-    fun getDataFromAPI(@Query("query[value]&fields[include][]=date")query: String): Call<RecyclerList>
+    fun getDataFromAPI(@Query("query[value]")query: String): Call<RecyclerList>
 
 }
